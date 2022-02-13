@@ -1,3 +1,7 @@
+{% extends "./base_generic.html" %}
+
+{% block content %}  
+
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -16,18 +20,18 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/upload">Cargar imágen</a>
+          <a class="nav-link" href="/upload">Cargar imagen</a>
         </li>
         <div class="row">
           {% for m in images %}
           <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
             <div class="card h-100 p-4">
               <img src="{{ m.image.url }}" class="card-img-top">
-              <a href="/media/{{m.file}}">View Script</a>
+              <a href="/media/{{m.image}}">View Script</a>
             </div>
           </div>
           {% empty %}
-          <p>No movies added.</p>
+          <p>No images added.</p>
           {% endfor %}
         </div>
   
@@ -41,3 +45,5 @@
       </ul>
     </div>
   </nav>
+
+  {% endblock %}
