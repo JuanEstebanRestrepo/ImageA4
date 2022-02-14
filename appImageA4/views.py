@@ -72,11 +72,15 @@ def upload(request):
     form = NewImageForm()
     orientation = 'horizontal'
     loaded_image = UserImage.objects.last()
-    image = Image.open(loaded_image.image)
-    width = image.size[0]
-    height = image.size[1]
-    orientation = check_orientation(width, height)
-    return render(request=request, template_name="./app/upload.html", context={'form':form, 'loaded_image':loaded_image, 'orientation':orientation})
+    print('------------', loaded_image)
+    if(loaded_image != None):
+        image = Image.open(loaded_image.image)
+        width = image.size[0]
+        height = image.size[1]
+        orientation = check_orientation(width, height)
+        return render(request=request, template_name="./app/upload.html", context={'form':form, 'loaded_image':loaded_image, 'orientation':orientation})
+    else:
+        return render(request=request, template_name="./app/upload.html", context={'form':form, 'orientation':orientation})
 
 bigA4 = 1123
 littleA4 = 796

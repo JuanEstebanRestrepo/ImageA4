@@ -19,3 +19,13 @@
 .container {
     background-color:white;
 }
+
+/* limita el tamaño y cantidad de cards */
+.grid-container {
+    display: grid;  
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.card {
+    margin: 15px;
+}
