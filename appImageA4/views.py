@@ -49,8 +49,8 @@ def login_request(request):
 @login_required
 def logout_request(request):
 	logout(request)
-	messages.info(request, "You have successfully logged out.") 
-	return redirect("appImageA4:login")
+	messages.info(request, "Has cerrado sesión correctamente.") 
+	return redirect("appImageA4:home")
 
 @login_required
 def upload(request):
@@ -68,19 +68,23 @@ def upload(request):
                 thought.resize_height = new_image.size[1]
                 thought.image = 'images/'+str(thought.image)
                 thought.save()
-        return redirect("appImageA4:upload")
+                loaded_image = UserImage.objects.filter(user=request.user).last()
+                return redirect("appImageA4:image_detail", loaded_image.id)
     form = NewImageForm()
     orientation = 'horizontal'
-    loaded_image = UserImage.objects.last()
-    print('------------', loaded_image)
+    return render(request=request, template_name="./app/upload.html", context={'form':form, 'orientation':orientation})
+
+def image_detail(request, pk):
+    orientation = 'horizontal'
+    loaded_image = UserImage.objects.filter(id = pk, user=request.user).first()
     if(loaded_image != None):
         image = Image.open(loaded_image.image)
         width = image.size[0]
         height = image.size[1]
         orientation = check_orientation(width, height)
-        return render(request=request, template_name="./app/upload.html", context={'form':form, 'loaded_image':loaded_image, 'orientation':orientation})
+        return render(request=request, template_name="./app/image.html", context={'loaded_image':loaded_image, 'orientation':orientation})
     else:
-        return render(request=request, template_name="./app/upload.html", context={'form':form, 'orientation':orientation})
+        return render(request=request, template_name="./app/image.html", context={'orientation':orientation})
 
 bigA4 = 1123
 littleA4 = 796

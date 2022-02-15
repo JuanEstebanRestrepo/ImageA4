@@ -4,39 +4,12 @@
    
 {% load crispy_forms_tags %}  
    
-<div>
-
-  <!--Django Form-->
-  <h2 class="my-4">Agregar una imagen</h2>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-      {{form|crispy}}
-        <button class="btn btn-dark my-4" type="submit">Enviar</button>
-  </form>
-
-  <!--Django Model-->
-  <h2 class="my-4">Hoja tamaño A4</h2>
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 pb-4">
-      <a>Orientación: {{orientation}}</a><br>
-      <a>Ancho original: {{loaded_image.original_width}}</a><br>
-      <a>Alto original: {{loaded_image.original_height}}</a><br>
-      <a>Ancho nuevo: {{loaded_image.resize_width}}</a><br>
-      <a>Alto nuevo: {{loaded_image.resize_height}}</a><br>
-      {% if orientation == 'horizontal' %}
-    </div>
-  </div>
-</div>
-<div class="sizeWidthA4">
-{% else %}
-<div class="sizeHeightA4">    
-{% endif %}
-  <img src="{{ loaded_image.image.url }}">
-  <!-- <a href="/media/images/{{loaded_image.url}}">View Script</a> -->
-</div>
-
-<p class="text-center"><a href="/index">Regresar</a></p>
-
-    
-
+  <div class="container">
+    <!--Django Form-->
+    <h2 class="my-4">Agregar una imagen</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+        {{form|crispy}}
+          <button class="btn btn-dark my-4" type="submit">Enviar</button>
+    </form>
 {% endblock %}
