@@ -3,11 +3,6 @@
     width: 1133px;
     height: 806px;
     border: 5px solid darkblue;
-
-    @media (max-width: @screen-sm-min) {  }
-    @media (max-width: @screen-md-min) {  }
-    @media (max-width: @screen-lg-min) {  }
-
 }
 
 .sizeHeightA4 {
@@ -18,13 +13,18 @@
 }
 
 .my-4 {
-    color: red;
+    color: #5087f4;
+}
+
+.btn-dark {
+    background-color: #5087f4 !important;
 }
 
 .container {
     background-color:white;
     border-radius: 5px;
     text-align: center;
+    max-width: 500px !important;
 }
 
 .container-image {
@@ -35,7 +35,7 @@
 /* limita el tamaño y cantidad de cards */
 .grid-container {
     display: grid;  
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 310px));
 }
 
 .card {

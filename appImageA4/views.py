@@ -22,9 +22,9 @@ def register_request(request):
 		if form.is_valid():
 			user = form.save()
 			login(request, user)
-			messages.success(request, "Registration successful." )
+			messages.success(request, "Ha sido registrado correctamente." )
 			return redirect("appImageA4:index")
-		messages.error(request, "Unsuccessful registration. Invalid information.")
+		messages.error(request, "No ha sido posible registrarlo. Información inválida.")
 	form = NewUserForm()
 	return render (request=request, template_name="./registration/register.html", context={"register_form":form})
 
@@ -37,12 +37,13 @@ def login_request(request):
 			user = authenticate(username=username, password=password)
 			if user is not None:
 				login(request, user)
-				messages.info(request, f"You are now logged in as {username}.")
+				messages.info(request, f"Has iniciado sesión como {username}.")
 				return redirect("appImageA4:index")
 			else:
-				messages.error(request,"Invalid username or password.")
+				messages.error(request,"Usuario o contraseña inválidos.")
 		else:
-			messages.error(request,"Invalid username or password.")
+			messages.error(request,"Usuario o contraseña inválidos.")
+
 	form = AuthenticationForm()
 	return render(request=request, template_name="./registration/login.html", context={"login_form":form})
 
@@ -68,8 +69,12 @@ def upload(request):
                 thought.resize_height = new_image.size[1]
                 thought.image = 'images/'+str(thought.image)
                 thought.save()
+                messages.success(request, "Imagen cargada correctamente." )
                 loaded_image = UserImage.objects.filter(user=request.user).last()
                 return redirect("appImageA4:image_detail", loaded_image.id)
+            else:
+                messages.error(request, "No ha sido posible cargar la imagen. Formato inválido.")
+                messages.error(request, "Porfavor selecciona una imagen JPG o JPEG.")
     form = NewImageForm()
     orientation = 'horizontal'
     return render(request=request, template_name="./app/upload.html", context={'form':form, 'orientation':orientation})

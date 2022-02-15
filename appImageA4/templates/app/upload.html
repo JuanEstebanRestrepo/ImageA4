@@ -9,7 +9,10 @@
     <h2 class="my-4">Agregar una imagen</h2>
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
-        {{form|crispy}}
-          <button class="btn btn-dark my-4" type="submit">Enviar</button>
+        <!-- {{form|crispy}} -->
+        {{form.name|as_crispy_field}}
+        {{form.description|as_crispy_field}}
+        {{form.image|as_crispy_field}}
+        <button class="btn btn-dark my-4" type="submit">Enviar</button>
     </form>
 {% endblock %}
