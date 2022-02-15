@@ -1,0 +1,20 @@
+{% extends "../app/base_generic.html" %}
+
+{% block content %}      
+
+{% load crispy_forms_tags %}
+
+<!--Login--> 
+<div class="container py-5">
+  <h1>Iniciar sesión</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ login_form|crispy }}
+    <br>
+    <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+  </form>
+  <br>
+  <p class="text-center">No tienes una cuenta? <a href="/register">Crear una cuenta</a>.</p>
+</div>
+
+{% endblock %}

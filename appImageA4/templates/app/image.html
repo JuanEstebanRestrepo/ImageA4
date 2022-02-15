@@ -1,0 +1,17 @@
+{% extends "./base_generic.html" %}
+
+{% block content %}  
+
+  <div class="container-image">
+    <div class="imageA4">
+        {% if orientation == 'horizontal' %}
+          <div class="sizeWidthA4">
+        {% else %}
+          <div class="sizeHeightA4">    
+        {% endif %}
+          <img class="image" src="{{ loaded_image.image.url }}">
+        </div>
+      </div>
+  </div>
+
+{% endblock %}
