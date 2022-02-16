@@ -12,7 +12,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 from django.contrib.messages import constants as messages
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'appImageA4',
     'crispy_forms',
-    'bootstrap4',
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -86,10 +89,10 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'image_db',
-        'USER': 'user_imageA4',
-        'PASSWORD': 'image1234',
-        'HOST': 'localhost',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
     }
 }
 
