@@ -1,5 +1,44 @@
 {% extends "./base_generic.html" %}
-
+{% load static %}
 {% block content %}  
+
+<div class="card-container">
+    <div class="row">
+        <div class="col-lg-6 card card-home-top">
+            <div class="card-body text-center">
+                <img src="{% static '/images/imageA4.jpeg' %}" alt="ImageA4" class="img-fluid rounded center">
+            </div>
+        </div>
+        <div class="col-lg-6 card card-home-top card-home-top-text">
+            <div class="card-header text-center">
+                <p class="card-text">ImageA4</p>
+            </div>
+            <div class="card-body text-justify">
+                <p class="card-text">
+                    
+                    Se redimencionan imágenes en formato JPG de cualquier dimensión (Ancho por alto), con el fin de permitir que la imagen se ajuste al tamaño de una hoja A4 (796
+                    x 1123 pixeles) sin márgenes. El resultado contempla las siguientes características: <br><br>
+                    <b>1.</b> La imagen no pierde su ratio (Relación de aspecto ancho por alto) <br>
+                    <b>2.</b> Se aprovecha el máximo de la hoja A4 <br>
+                    <b>3.</b> La imagen no es agrandada en el proceso, solo encogida cuando corresponda <br>
+                    <b>4.</b> La orientación de la página se define a partir de la orientación de la imagen (Horizontal/Vertical)
+
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-lg-6 col-xl-6 card card-home-bottom">
+            <div class="card-body text-center">
+                <img id="img-paisaje" src="{% static '/images/paisaje.jpg' %}" alt="ImageA4" class="img-fluid rounded">
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-6 col-xl-6 card card-home-bottom">
+            <div class="card-body text-center">
+                <img id="img-paisajeA4" src="{% static '/images/paisajeA4.png' %}" alt="ImageA4" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

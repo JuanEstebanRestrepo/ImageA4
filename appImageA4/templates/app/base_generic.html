@@ -1,99 +1,96 @@
 {% load static %}
 <!DOCTYPE html>
-<head>
-    <link rel="icon" href="{% static '/images/favicon.ico' %}">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{% static '/js/scripts.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
-    <!--Bootstrap CSS-->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-    <!-- Font Awesome -->
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">   
+<html>
+    <head>
+        <title>ImageA4</title>
+        <link rel="icon" href="{% static '/images/favicon.ico' %}">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="{% static '/js/scripts.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">   
 
-    {# Cargamos la librería #}
-    {% load bootstrap4 %}
+        {# Cargamos la librería #}
+        {% load bootstrap4 %}
 
-    {# CSS Bootstrap #}
-    {% bootstrap_css %}
-</head>
-<body class="my-body">
-    <div class="base-header"></div>
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light navbar-background navbar-dark fixed-top">
-        <!-- <a class="navbar-brand">Hola, {{user.username}}</a> -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="nav navbar-nav mr-auto">
+        {# CSS Bootstrap #}
+        {% bootstrap_css %}
 
-                {% if user.is_authenticated %}
-        
-                <li class="nav-item">
-                    <a class="nav-link" href="/index">Galería</a>
-                </li>
-        
-                <li class="nav-item">
-                    <a  class="nav-link" href="/upload">Cargar imagen</a>
-                </li>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-md navbar-light navbar-background navbar-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="nav navbar-nav mr-auto">
+
+                    <li class="li-navbar-brand">
+                        <a class="logo navbar-brand nav-link" href="/"><img id="card-img" src="{% static '/images/A4.png' %}" alt="ImageA4" class="img-fluid rounded card-img-top"></a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index">Galería</a>
+                        </li>
                 
-                {% else %}
-        
-                <li class="nav-item">
-                    <a class="nav-link" href="/">imageA4</a>
-                </li>
-        
-                {% endif %}
-            </ul>
-            <ul class="nav navbar-nav ml-auto">
-                {% if user.is_authenticated %}
-                <li>
-                    <a  class="navbar-brand nav-link">Hola, {{user.username}}</a>
-                </li>
-                
-                <li class="nav-item">
-                    <a  class="nav-link ml-auto" href="/logout">Cerrar sesión</a>
-                </li>
-                
-                {% else %}
-        
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Iniciar sesión</a>
-                </li>
-        
-                <li class="nav-item">
-                    <a class="nav-link" href="/register">Registrarse</a>
-                </li>
-        
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
+                        <li class="nav-item">
+                            <a  class="nav-link" href="/upload">Agregar imagen</a>
+                        </li>
+            
+                    {% endif %}
+                </ul>
+                <ul class="nav navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
 
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <div class="container-fluid p-0">
-                    <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="True">&times;</span>
-                        </button>
-                        {{ message }}
+                        <li class="li-navbar-brand">
+                            <a class="navbar-brand nav-link">Hola, {{user.username}}</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link ml-auto" href="/logout">Cerrar sesión</a>
+                        </li>
+                    
+                    {% else %}
+            
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Iniciar sesión</a>
+                        </li>
+                
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Registrarse</a>
+                        </li>
+            
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </head>
+    <body class="my-body">
+
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <div class="container-fluid p-0">
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="True">&times;</span>
+                            </button>
+                            {{ message }}
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-        </ul>
-    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
 
-    {% block content %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
 
-    {# JS y jQuery Bootstrap #}
-    {% bootstrap_javascript jquery='full' %}
-</body>
-
+        {# JS y jQuery Bootstrap #}
+        {% bootstrap_javascript jquery='full' %}
+    </body>
+</html>

@@ -4,18 +4,22 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods, require_safe
 from PIL import Image
 from .forms import NewImageForm
 from .models import UserImage
 
+@require_safe
 def home(request):
     return render(request, './app/home.html')
 
 @login_required
+@require_safe
 def index(request):
     images = UserImage.objects.filter(user=request.user)
     return render(request, './app/index.html', context={'images':images})
 
+@require_http_methods(["GET", "POST"])
 def register_request(request):
 	if request.method == "POST":
 		form = NewUserForm(request.POST)
@@ -28,6 +32,7 @@ def register_request(request):
 	form = NewUserForm()
 	return render (request=request, template_name="./registration/register.html", context={"register_form":form})
 
+@require_http_methods(["GET", "POST"])
 def login_request(request):
 	if request.method == "POST":
 		form = AuthenticationForm(request, data=request.POST)
@@ -48,12 +53,14 @@ def login_request(request):
 	return render(request=request, template_name="./registration/login.html", context={"login_form":form})
 
 @login_required
+@require_safe
 def logout_request(request):
 	logout(request)
 	messages.info(request, "Has cerrado sesión correctamente.") 
 	return redirect("appImageA4:home")
 
 @login_required
+@require_http_methods(["GET", "POST"])
 def upload(request):
     if request.method == "POST":
         form = NewImageForm(request.POST, request.FILES,)
@@ -75,6 +82,10 @@ def upload(request):
             else:
                 messages.error(request, "No ha sido posible cargar la imagen. Formato inválido.")
                 messages.error(request, "Porfavor selecciona una imagen JPG o JPEG.")
+        else: 
+            messages.error(request, "No ha sido posible cargar la imagen. Formato inválido.")
+            messages.error(request, "Porfavor selecciona una imagen JPG o JPEG.")
+
     form = NewImageForm()
     orientation = 'horizontal'
     return render(request=request, template_name="./app/upload.html", context={'form':form, 'orientation':orientation})

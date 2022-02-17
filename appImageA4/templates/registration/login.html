@@ -6,7 +6,7 @@
 
 <!--Login--> 
 <div class="container py-5">
-  <h1>Iniciar sesión</h1>
+  <h2 class="my-4">Iniciar sesión</h2>
   <form method="POST">
     {% csrf_token %}
     {{ login_form|crispy }}
