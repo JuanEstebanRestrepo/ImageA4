@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from .models import UserImage
-from .views import verify_file_name
+from . import views
 import os
 from dotenv import load_dotenv
 
@@ -85,6 +85,6 @@ class Image(TestCase):
 
 	def test_verify_file_name(self):
 		file_name = 'paisaje.jpg'
-		response = verify_file_name(file_name)
+		response = views.verify_file_name(file_name)
 		self.assertEqual(response, '(copia1)'+file_name)
 
