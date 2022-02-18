@@ -41,7 +41,21 @@ Esta herramienta es muy práctica ya que nos permite mejorar en el proceso para 
 
 ![deuda](images_readme/deuda.png "deuda")
 
-- ### Código limpio + Clean architecture
+- ### Clean code + Clean architecture
+
+    - **Clean code:** Con la idea de tener un proyecto que cumpla con código limpio y sea fácil de entender, se hizo uso de diferentes metodologías como:
+
+        - Convenciones: nombrar variables, funciones, métodos de una forma clara y autoexplicativa, que al leerla ya se tenga una idea de que es o hace. Una ayuda sería tener en cuenta ¿Por qué los estoy creando? ¿Para qué serán usados? ¿Para qué servirán?
+
+        - Código duplicado: Evitar crear código duplicado, haciendo uso de decoradores o funciones que se puedan reimplementar.
+
+    - **Clean architecture:** Se usaron principios y patrones de desarrollo para facilitar la construcción del proyecto y permitir un fácil mantenimiento:
+
+        - MVT (Model View Template): se diseñó el proyecto con una estructura definida en la que cada componente tiene una función específica, como los **modelos** son los encargados de interactuar con la base de datos y procesar datos, las **vistas** son las encargadas de recibir las solicitudes, procesar operaciones y devuelve respuestas, y las **plantillas** son las responsables de encapsular y contruir el html que verá el usuario.
+
+        - Cohesión: para evitar archivos monolíticos se dividen en archivos más pequeños agrupando funcionalidades en común, para facilitar la lectura y mantenimiento de los mismos.
+
+        
 
 - ### Stack usado, lenguaje, librerías
 
