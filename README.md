@@ -1,13 +1,13 @@
 # Proyecto ImageA4
 
-##Funcionamiento de la aplicación
+## Funcionamiento de la aplicación
 
 Se redimencionan imágenes en formato JPG de cualquier dimensión (Ancho por alto), con el fin de permitir que la imagen se ajuste al tamaño de una hoja A4 (796 x 1123 pixeles) sin márgenes. El resultado contempla las siguientes características:
 
-**1.** La imagen no pierde su ratio (Relación de aspecto ancho por alto)
-**2.** Se aprovecha el máximo de la hoja A4
-**3.** La imagen no es agrandada en el proceso, solo encogida cuando corresponda
-**4.** La orientación de la página se define a partir de la orientación de la imagen (Horizontal/Vertical)
+- **1.** La imagen no pierde su ratio (Relación de aspecto ancho por alto)
+- **2.** Se aprovecha el máximo de la hoja A4
+- **3.** La imagen no es agrandada en el proceso, solo encogida cuando corresponda
+- **4.** La orientación de la página se define a partir de la orientación de la imagen (Horizontal/Vertical)
 
 ![home](images_readme/home.png "home")
 
