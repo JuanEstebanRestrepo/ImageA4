@@ -3,13 +3,13 @@
 {% block content %}  
 
   <div class="container-image">
-    <div class="imageA4">
+    <div class="imageA4 d-flex justify-content-center">
         {% if orientation == 'horizontal' %}
           <div class="sizeWidthA4">
         {% else %}
           <div class="sizeHeightA4">    
         {% endif %}
-          <img class="image" src="{{ loaded_image.image.url }}">
+          <img class="view-image" src="{{ loaded_image.image.url }}" alt="{{ loaded_image.image.description }}">
         </div>
       </div>
   </div>

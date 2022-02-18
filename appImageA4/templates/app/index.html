@@ -8,21 +8,21 @@
 
     <div class="grid-container">
       {% for image in images %}
-      <!-- <div class="col-lg-3 col-md-4 col-sm-12 pb-4"> -->
-        <div class="card mb-3">
+        <div class="card card-galery mb-3">
           <div class="card-header">
             <p class="card-text">{{image.name}}</p>
           </div>
           <div class="card-body">
-            <!-- <a href="/media/{{image.image}}"><img src="{{ image.image.url }}" class="img-fluid rounded card-img-top"></a> -->
-            <a href="/image_detail/{{image.id}}"><img src="{{ image.image.url }}" class="img-fluid rounded card-img-top"></a>
+            <img id="card-img" src="{{ image.image.url }}" class="img-fluid rounded card-img-top" alt="{{ image.description }}">
+            <div class="overlay">
+              <div class="text-overley"><a href="/image_detail/{{image.id}}"><img id="card-img" src="{{ image.image.url }}" alt="{{ image.description }}" class="img-fluid rounded card-img-top"></a>Ver detalle</div>
+            </div>
           </div>
           <div class="card-footer text-left">
             <p class="card-text">Original: ({{image.original_width}}, {{image.original_height}})</p>
             <p class="card-text">A4: ({{image.resize_width}}, {{image.resize_height}})</p>
           </div>
         </div>
-      <!-- </div> -->
       {% empty %}
       <div class="container-fluid">
         <br><br><br>

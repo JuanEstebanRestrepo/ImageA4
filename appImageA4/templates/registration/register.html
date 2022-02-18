@@ -6,7 +6,7 @@
 
 <!--Register--> 
 <div class="container py-5">
-	<h1>Crear una cuenta</h1>
+	<h2 class="my-4">Crear una cuenta</h2>
 	<form method="POST">
 		{% csrf_token %}
 		{{ register_form|crispy }}   

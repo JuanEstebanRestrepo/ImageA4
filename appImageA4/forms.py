@@ -26,7 +26,7 @@ class NewUserForm(UserCreationForm):
 class NewImageForm(forms.ModelForm):
     name = forms.CharField(required=True, label="Nombre")
     description = forms.CharField(required=True, label="Descripción")
-    image = forms.ImageField(required=True, label="Seleccionar imagen")
+    image = forms.ImageField(required=True, label="Seleccionar imagen", widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
     class Meta:
         model = UserImage
